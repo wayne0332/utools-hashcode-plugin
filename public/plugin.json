@@ -1,0 +1,23 @@
+{
+  "pluginName": "HashCode",
+  "version": "0.0.1",
+  "description": "兼容Java实现的字符串HashCode",
+  "author": "jiangsheng.ljs",
+  "main": "index.html",
+  "preload": "preload.js",
+  "logo": "logo.png",
+  "pluginSetting": {
+    "single": true,
+    "height": 1
+  },
+  "features": [
+    {
+      "code": "hashcode",
+      "explain": "Hash Code",
+      "cmds": [
+        "hashcode",
+        "hc"
+      ]
+    }
+  ]
+}

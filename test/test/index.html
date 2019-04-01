@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="content"></div>
+</body>
+
+<script>
+  var result = window.spawn()
+  result.stdio.on('data', data => {
+    document.getElementById('content').innerHTML = '' + data
+  })
+  utools.outPlugin()
+</script>
+
+</html>

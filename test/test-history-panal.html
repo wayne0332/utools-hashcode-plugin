@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #message {
+      width: 500px;
+      height: 500px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" @click.right="alert('click')" @keyup.enter="alert('enter')">
+    <el-table ref="historyTable" :data="history" style="width: 100%" :show-header="false"
+      @current-change="handleRowChange" highlight-current-row @row-click="historySelect">
+      <el-table-column property="value" />
+    </el-table>
+  </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'hello',
+      currentRow: -1,
+      history: [
+        {
+          id: 110,
+          value: 'java'
+        },
+        {
+          id: 120,
+          value: 'python -V'
+        }
+      ]
+    },
+    mounted: function () {
+      var self = this
+      document.onkeydown = function (e) {
+        var keyCode = window.event ? e.keyCode : e.which;
+        if (keyCode == 38) {
+          self.keyToUp();
+        }
+        if (keyCode == 40) {
+          self.ketToDown();
+        }
+      };
+    },
+    methods: {
+      keyToUp: function () {
+        this.highlightRow(this.currentRow - 1);
+      },
+      ketToDown: function () {
+        this.highlightRow(this.currentRow + 1);
+      },
+      highlightRow: function (row) {
+        // console.log("row: " + row);
+        if (this.history === null || this.history.length == 0) {
+          return;
+        }
+        var length = this.history.length;
+        // console.log("length: " + length);
+        this.currentRow = row;
+        if (this.currentRow == length) {
+          this.currentRow = 0;
+        }
+        if (this.currentRow < 0) {
+          this.currentRow = length - 1;
+        }
+        // console.log(this.currentRow);
+        this.$refs.historyTable.setCurrentRow(this.history[this.currentRow]);
+      },
+      handleRowChange: function (row) {
+        this.currentRow = this.history.findIndex(item => item.value === row.value)
+      },
+      historySelect: function (row, column, event) {
+        this.$emit
+      }
+    }
+  })
+
+</script>
+
+</html>

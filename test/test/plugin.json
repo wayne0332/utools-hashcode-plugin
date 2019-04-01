@@ -1,0 +1,22 @@
+{
+    "pluginName": "命令行调用-测试",
+    "version": "0.0.1",
+    "description": "命令行调用-测试",
+    "author": "lanyuanxiaoyao",
+    "homepage": "http://lanyuanxiaoyao.com",
+    "main": "index.html",
+    "preload": "preload.js",
+    "logo": "logo.png",
+    "pluginSetting": {
+        "single": true
+    },
+    "features": [
+        {
+            "code": "cmd",
+            "explain": "命令行",
+            "cmds": [
+                "cmd"
+            ]
+        }
+    ]
+}
